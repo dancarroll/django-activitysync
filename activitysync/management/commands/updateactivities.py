@@ -11,8 +11,6 @@ import os
 import sys
 import time
 import datetime
-import feedparser
-import twitter
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
@@ -80,9 +78,6 @@ class Command(BaseCommand):
                             Activity.objects.create(title=activity_item.title, link=activity_item.link, username=activity_item.username, author=activity_item.author, comments=activity_item.comments, pub_date=activity_item.pub_date, published=activity_item.published, guid=activity_item.guid, provider=providerModelObject)
 
         except:
-            ### DEBUGGING CODE
-            raise
-            ### END DEBUGGING
             items_added = True
             print "Unexpected error:", sys.exc_info()[0]
             email_status_info.append("Unexpected error: %s\n\n" % sys.exc_info()[0])    
