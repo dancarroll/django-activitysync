@@ -3,4 +3,6 @@ syntax: glob
 *.pyc
 *.swp
 example.db
+dist
+django_activitysync.egg-info
 
