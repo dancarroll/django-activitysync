@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, '../../'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db'),
+        'NAME': os.path.join(BASE_DIR, 'example.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -96,5 +96,17 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+    'activitysync',
 )
+
+ACTIVITYSYNC_PROVIDERS = (
+    'activitysync.providers.twitterprovider.TwitterProvider',
+    # 'activitysync.providers.googlereader.GoogleReaderProvider',
+    # 'activitysync.providers.redditprovider.RedditProvider',
+)
+
+TWITTER_USERNAME = 'twitter'
+# REDDIT_USERNAME = ''
+# GOOGLEREADER_SHARED_RSS = ''
+# GOOGLEREADER_PUBLIC_URL = ''
 
