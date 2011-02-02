@@ -78,6 +78,7 @@ class Command(BaseCommand):
                             Activity.objects.create(title=activity_item.title, link=activity_item.link, username=activity_item.username, author=activity_item.author, comments=activity_item.comments, pub_date=activity_item.pub_date, published=activity_item.published, guid=activity_item.guid, provider=providerModelObject)
 
         except:
+            raise
             items_added = True
             print "Unexpected error:", sys.exc_info()[0]
             email_status_info.append("Unexpected error: %s\n\n" % sys.exc_info()[0])    
