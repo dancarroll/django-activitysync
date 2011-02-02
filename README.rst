@@ -104,4 +104,6 @@ Configuration
 .. _Reddit: http://reddit.com/
 .. _pypi: http://pypi.python.org/pypi/django-activitysync/
 .. _Bitbucket: https://bitbucket.org/dancarroll/django-activitysync
+.. _python-twitter: http://code.google.com/p/python-twitter/
+.. _feedparser: http://www.feedparser.org/
 
