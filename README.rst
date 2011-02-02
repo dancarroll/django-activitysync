@@ -92,11 +92,39 @@ Configuration
 
 - Sync database to create needed models::
 
-    ./manage syncdb
+    python manage.py syncdb
 
   or (if you have South installed)::
 
-    ./manage migrate activitysync
+    python manage.py migrate activitysync
+
+
+-----
+Usage
+-----
+Once configuration is completed, run the included management command
+to fetch activities for the configured providers::
+
+    python manage.py updateactivities
+
+The command will print out all new activities to the command line. All
+activity items are stored with a unique guid value, so this command can
+be run as often as needed without worrying about creating duplicate values.
+In a production site, this command likely would be added to the crontab (or
+other scheduler) to run fairly often (such as every 30 minutes).
+
+There are a few options available for the management command.
+
+- Use the --send-result option to send an email to the site admins (controlled
+  by the Django ADMIN setting) with the newly added activities (no email is
+  sent if there are no new items)::
+
+    python manage.py updateactivities --send_result
+
+- Use the --dry-run option to output the items to the console, but not
+  actually create items in the database::
+
+    python manage.py updateactivities --dry-run
 
 
 .. _Twitter: http://twitter.com/
