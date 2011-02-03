@@ -14,9 +14,8 @@ Updating activities happens through a Django management command, which can
 be automated by using a utility like cron.
 
 
---------
 Features
---------
+========
 
 - Currently supports the following activity providers:
 
@@ -28,9 +27,9 @@ Features
   easy to add support for additional networks
 
 
-------------
 Dependencies
-------------
+============
+
 Dependencies that *must* be meet to use the application:
 
 - Twitter support depends on python-twitter_
@@ -38,9 +37,8 @@ Dependencies that *must* be meet to use the application:
 - Google Reader and Reddit support depend on feedparser_
 
 
-------------
 Installation
-------------
+============
 
 From pypi_::
 
@@ -54,7 +52,7 @@ or clone from Bitbucket_::
 
     $ hg clone https://bitbucket.org/dancarroll/django-activitysync
 
-and add social_auth to PYTHONPATH::
+and add activitysync to PYTHONPATH::
 
     $ export PYTHONPATH=$PYTHONPATH:$(pwd)/django-activitysync/
 
@@ -64,17 +62,17 @@ or::
     $ sudo python setup.py install
 
 
--------------
 Configuration
--------------
-- Add activitysync to PYTHONPATH and installed applications::
+=============
+
+- Add activitysync to ``INSTALLED_APPS`` in settings.py::
 
     INSTALLED_APPS = (
         ...
         'activitysync'
     )
 
-- Add desired providers to ACTIVITYSYNC_PROVIDERS setting::
+- Add desired providers to ``ACTIVITYSYNC_PROVIDERS`` setting::
 
     ACTIVITYSYNC_PROVIDERS = (
         'activitysync.providers.googlereader.GoogleReaderProvider',
@@ -82,8 +80,8 @@ Configuration
         'activitysync.providers.redditprovider.RedditProvider',
     )
 
-- Setup provider settings (dependent on which providers are added). Settings
-  required for built-in providers are::
+- Add provider settings to settings.py (dependent on which providers are added).
+  Settings required for built-in providers are::
 
     TWITTER_USERNAME        = ''
     REDDIT_USERNAME         = ''
@@ -99,9 +97,12 @@ Configuration
     python manage.py migrate activitysync
 
 
------
 Usage
------
+=====
+
+Fetching and creating activity items
+------------------------------------
+
 Once configuration is completed, run the included management command
 to fetch activities for the configured providers::
 
@@ -115,16 +116,46 @@ other scheduler) to run fairly often (such as every 30 minutes).
 
 There are a few options available for the management command.
 
-- Use the --send-result option to send an email to the site admins (controlled
-  by the Django ADMIN setting) with the newly added activities (no email is
-  sent if there are no new items)::
+- Use the ``--send-result`` option to send an email to the site admins
+  (controlled by the Django ADMIN setting) with the newly added activities
+  (no email is sent if there are no new items)::
 
     python manage.py updateactivities --send_result
 
-- Use the --dry-run option to output the items to the console, but not
+- Use the ``--dry-run option`` to output the items to the console, but not
   actually create items in the database::
 
     python manage.py updateactivities --dry-run
+
+
+Using activity items
+--------------------
+
+Activity items can be accessed like any other model using Django's ORM. Here
+is a quick example of getting all published activity items (fetched items
+default to public, but can be hidden by modifying the item in the Django
+admin site)::
+
+    from django.shortcuts import render_to_response
+    from activitysync.models import Activity
+
+    def index(request):
+        return render_to_response(
+            'index.html',
+            { 'activities': Activity.objects.published() }
+        )
+
+Django-activitysync also provides a template tag for displaying items::
+
+    {% load activitysync_extras %}
+    {% render_activities activities %}
+
+The ``render_activities`` template tag will pass the object list and
+``MEDIA_URL`` values to the template ``activitysync/activities_tag.html``.
+The project comes with a sample template that will be used by default, or you
+can use it as a basis for your own. A second template tag,
+``render_activities_with_date_headers`` renders the activity list along with
+date headers for each unique day encountered.
 
 
 .. _Twitter: http://twitter.com/
