@@ -15,7 +15,7 @@ class TwitterUserProvider(ActivityProvider):
 
         print 'Attempting to obtain Twitter items'
         api = TwitterLibrary.Api()
-        username = settings.TWITTER_USERNAME
+        username = settings.ACTIVITYSYNC_SETTINGS['TWITTER_USERNAME']
         print ' Username: %s' % username
         statuses = api.GetUserTimeline(username, count=50)
 
@@ -42,7 +42,8 @@ class TwitterUserProvider(ActivityProvider):
         return ''
 
     def link(self):
-        return 'http://twitter.com/%s' % settings.TWITTER_USERNAME
+        return ('http://twitter.com/%s' %
+            settings.ACTIVITYSYNC_SETTINGS['TWITTER_USERNAME'])
 
     def sourceid(self):
         return 'twitter'
@@ -58,7 +59,7 @@ class TwitterSearchProvider(ActivityProvider):
 
         print 'Attempting to obtain Twitter items'
         api = TwitterLibrary.Api()
-        query = settings.TWITTER_SEARCHTERM
+        query = settings.ACTIVITYSYNC_SETTINGS['TWITTER_SEARCHTERM']
         print ' Search term: %s' % query
         statuses = api.GetSearch(term=query, per_page=50)
 
@@ -84,7 +85,8 @@ class TwitterSearchProvider(ActivityProvider):
         return ''
 
     def link(self):
-        return 'http://twitter.com/search?q=%s' % settings.TWITTER_SEARCHTERM
+        return ('http://twitter.com/search?q=%s' %
+            settings.ACTIVITYSYNC_SETTINGS['TWITTER_SEARCHTERM'])
 
     def sourceid(self):
         return 'twitter'

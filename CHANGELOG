@@ -11,6 +11,9 @@ Repository version
 * BACKWARDS INCOMPATIBLE CHANGE: Renamed TwitterProvider to TwitterUserProvider
   to distinguish it from the new TwitterSearchProvider
 
+* BACKWARDS INCOMPATIBLE CHANGE: Moved all provider settings into a
+  ACTIVITYSYNC_SETTINGS dictionary to cut down on clutter
+
 
 Version 0.1.2, 8 Feb 2011
 -------------------------

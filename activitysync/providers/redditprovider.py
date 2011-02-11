@@ -14,7 +14,7 @@ class RedditProvider(ActivityProvider):
         item_list = []
 
         print 'Attempting to parse Reddit feed'
-        username = settings.REDDIT_USERNAME
+        username = settings.ACTIVITYSYNC_SETTINGS['REDDIT_USERNAME']
         parsed_feed = feedparser.parse("http://www.reddit.com/user/%s/liked/.rss" % username)
 
         for entry in parsed_feed.entries:
@@ -55,7 +55,8 @@ class RedditProvider(ActivityProvider):
         return 'Liked'
 
     def link(self):
-        return 'http://www.reddit.com/user/%s/' % settings.REDDIT_USERNAME
+        return ('http://www.reddit.com/user/%s/' %
+            settings.ACTIVITYSYNC_SETTINGS['REDDIT_USERNAME'])
 
     def sourceid(self):
         return 'reddit'

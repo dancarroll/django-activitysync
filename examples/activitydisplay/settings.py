@@ -106,9 +106,11 @@ ACTIVITYSYNC_PROVIDERS = (
     # 'activitysync.providers.redditprovider.RedditProvider',
 )
 
-TWITTER_USERNAME = 'twitter'
-TWITTER_SEARCHTERM = 'django'
-# REDDIT_USERNAME = ''
-# GOOGLEREADER_SHARED_RSS = ''
-# GOOGLEREADER_PUBLIC_URL = ''
+ACTIVITYSYNC_SETTINGS = {
+    'TWITTER_USERNAME': 'twitter',
+    'TWITTER_SEARCHTERM': 'django',
+    # 'REDDIT_USERNAME': '',
+    # 'GOOGLEREADER_SHARED_RSS': '',
+    # 'GOOGLEREADER_PUBLIC_URL': '',
+}
 

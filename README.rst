@@ -34,7 +34,7 @@ Dependencies that *must* be meet to use the application:
 
 - Twitter support depends on python-twitter_
 
-- Google Reader and Reddit support depend on feedparser_
+- Google Reader and Reddit support depend on feedparser_ (version 4.1)
 
 
 Installation
@@ -82,13 +82,17 @@ Configuration
     )
 
 - Add provider settings to settings.py (dependent on which providers are added).
-  Settings required for built-in providers are::
-
-    TWITTER_USERNAME        = '' # Username to use for TwitterUserProvider
-    TWITTER_SEARCHTERM      = '' # Search term to use for TwitterSearchProvider
-    REDDIT_USERNAME         = '' # Username to use for RedditProvider
-    GOOGLEREADER_SHARED_RSS = '' # URL of your shared items RSS
-    GOOGLEREADER_PUBLIC_URL = '' # URL to public page
+  For ease of use and organizational purposes, all settings for providers should
+  be stored in the ``ACTIVITYSYNC_SETTINGS`` dictionary. Settings required for
+  built-in providers are::
+    
+    ACTIVITYSYNC_SETTINGS = {
+        'TWITTER_USERNAME': '', # Username to use for TwitterUserProvider
+        'TWITTER_SEARCHTERM': '', # Search term to use for TwitterSearchProvider
+        'REDDIT_USERNAME': '', # Username to use for RedditProvider
+        'GOOGLEREADER_SHARED_RSS': '', # URL of Google Reader shared items RSS feed
+        'GOOGLEREADER_PUBLIC_URL': '', # URL to Google Reader public page
+    }
 
 - Sync database to create needed models::
 

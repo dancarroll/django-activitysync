@@ -16,7 +16,8 @@ class GoogleReaderProvider(ActivityProvider):
         item_list = []
 
         print 'Attempting to parse Google Reader feed'
-        parsed_feed = feedparser.parse(settings.GOOGLEREADER_SHARED_RSS)
+        feed_url = settings.ACTIVITYSYNC_SETTINGS['GOOGLEREADER_SHARED_RSS']
+        parsed_feed = feedparser.parse(feed_url)
     
         for entry in parsed_feed.entries:
             title = entry.title.encode(parsed_feed.encoding, "xmlcharrefreplace")
@@ -58,7 +59,7 @@ class GoogleReaderProvider(ActivityProvider):
         return 'Shared'
 
     def link(self):
-        return settings.GOOGLEREADER_PUBLIC_URL
+        return settings.ACTIVITYSYNC_SETTINGS['GOOGLEREADER_PUBLIC_URL']
 
     def sourceid(self):
         return 'googlereader'
