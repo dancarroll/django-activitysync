@@ -100,12 +100,14 @@ INSTALLED_APPS = (
 )
 
 ACTIVITYSYNC_PROVIDERS = (
-    'activitysync.providers.twitterprovider.TwitterProvider',
+    'activitysync.providers.twitterprovider.TwitterUserProvider',
+    'activitysync.providers.twitterprovider.TwitterSearchProvider',
     # 'activitysync.providers.googlereader.GoogleReaderProvider',
     # 'activitysync.providers.redditprovider.RedditProvider',
 )
 
 TWITTER_USERNAME = 'twitter'
+TWITTER_SEARCHTERM = 'django'
 # REDDIT_USERNAME = ''
 # GOOGLEREADER_SHARED_RSS = ''
 # GOOGLEREADER_PUBLIC_URL = ''

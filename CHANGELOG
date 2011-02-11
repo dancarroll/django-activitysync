@@ -5,9 +5,11 @@ django-activitysync change log
 Repository version
 ------------------
 
-* BACKWARDS INCOMPATIBLE CHANGE:
+* Added TwitterSearchProvider to allow syncing the results of a Twitter
+  search query
 
-* Added additional
+* BACKWARDS INCOMPATIBLE CHANGE: Renamed TwitterProvider to TwitterUserProvider
+  to distinguish it from the new TwitterSearchProvider
 
 
 Version 0.1.2, 8 Feb 2011

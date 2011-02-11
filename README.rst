@@ -76,15 +76,17 @@ Configuration
 
     ACTIVITYSYNC_PROVIDERS = (
         'activitysync.providers.googlereader.GoogleReaderProvider',
-        'activitysync.providers.twitterprovider.TwitterProvider',
+        'activitysync.providers.twitterprovider.TwitterUserProvider',
+        'activitysync.providers.twitterprovider.TwitterSearchProvider',
         'activitysync.providers.redditprovider.RedditProvider',
     )
 
 - Add provider settings to settings.py (dependent on which providers are added).
   Settings required for built-in providers are::
 
-    TWITTER_USERNAME        = ''
-    REDDIT_USERNAME         = ''
+    TWITTER_USERNAME        = '' # Username to use for TwitterUserProvider
+    TWITTER_SEARCHTERM      = '' # Search term to use for TwitterSearchProvider
+    REDDIT_USERNAME         = '' # Username to use for RedditProvider
     GOOGLEREADER_SHARED_RSS = '' # URL of your shared items RSS
     GOOGLEREADER_PUBLIC_URL = '' # URL to public page
 
