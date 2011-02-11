@@ -1,4 +1,4 @@
-include *.rst AUTHORS LICENSE
+include *.rst AUTHORS LICENSE CHANGELOG
 recursive-include activitysync/media *
 recursive-include activitysync/templates *
 recursive-exclude examples *

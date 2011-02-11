@@ -15,6 +15,9 @@ setup(
     url = 'https://bitbucket.org/dancarroll/django-activitysync',
     download_url = 'https://bitbucket.org/dancarroll/django-activitysync/downloads',
     packages = find_packages(),
+    package_data = { 'activitysync':
+        ['templates/*.html', 'templates/activitysync/*.html']
+    },
     long_description = open(join(dirname(__file__), 'README.rst')).read(),
     classifiers = ['Framework :: Django',
                    'Development Status :: 4 - Beta',
