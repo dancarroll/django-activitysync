@@ -5,6 +5,22 @@ django-activitysync change log
 Repository version
 ------------------
 
+* TBD
+
+
+Version 0.2.1, 11 Feb 2011
+--------------------------
+
+Packaged from changeset 14 of the Mercurial repository.
+
+* Fixed packaging issue, since templates were not getting installed
+
+
+Version 0.2.0, 11 Feb 2011
+--------------------------
+
+Packaged from changeset 13 of the Mercurial repository.
+
 * Added TwitterSearchProvider to allow syncing the results of a Twitter
   search query
 
