@@ -8,6 +8,15 @@ Repository version
 * TBD
 
 
+Version 0.2.2, 13 Feb 2011
+--------------------------
+
+Packaged from changeset 17 of the Mercurial repository.
+
+* Removed views.py and paginator.py. They were both specific to the project
+  django-activitysync was originally a part of, and had hardcoded view names.
+
+
 Version 0.2.1, 11 Feb 2011
 --------------------------
 
